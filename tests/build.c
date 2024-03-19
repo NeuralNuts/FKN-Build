@@ -3,8 +3,8 @@
 
 struct BuildFiles build_files[] = {
     { .file_path = "./main.c", },
-    //{ .file_path = "./add.c" },
-    //{ .file_path = "./minus.c" }
+    { .file_path = "./add.c" },
+    { .file_path = "./minus.c" }
 };
 
 void build() {
