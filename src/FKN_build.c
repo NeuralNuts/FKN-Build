@@ -50,31 +50,25 @@ int FKN_GET_ARRAY_LENGTH(struct BuildFiles build_files[]) {
 }
 
 void FKN_BUILD(struct BuildFiles build_files[], int array_length, char exe_name[]) {
-    size_t total_length = 0;
+    size_t total_length = strlen("gcc -o ") + strlen(exe_name) + array_length * (FILENAME_MAX + 2) + 1;
+    char *result = malloc(total_length);
 
-    for(int i = 0; i < array_length; i++) {
-        total_length += strlen(build_files[i].file_path) + 1;
-    }
-
-    char *result = malloc(total_length + strlen(exe_name) + 5);
-
-    if(result == NULL) {
+    if (result == NULL) {
         perror("Memory allocation failed");
         exit(EXIT_FAILURE);
     }
 
-    strcpy(result, "gcc ");
-    strcat(result, "-o ");
+    strcpy(result, "gcc -o ");
     strcat(result, exe_name);
-    strcat(result, " ");
 
-    for(int i = 0; i < array_length; i++) {
-        strcat(result, build_files[i].file_path);
+    for (int i = 0; i < array_length; i++) {
         strcat(result, " ");
+        strcat(result, build_files[i].file_path);
     }
 
-    printf("%s", result);
+    printf("%s\n", result);
 
     system(result);
-    system("rm a.out");
+
+    free(result);
 }
