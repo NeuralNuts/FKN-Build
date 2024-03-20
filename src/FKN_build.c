@@ -57,8 +57,7 @@ void FKN_BUILD(struct BuildFiles build_files[], int array_length, char exe_name[
         perror("Memory allocation failed");
         exit(EXIT_FAILURE);
     }
-
-    strcpy(result, "gcc -o ");
+    strncpy(result, "gcc -o ", total_length);
     strcat(result, exe_name);
 
     for (int i = 0; i < array_length; i++) {
@@ -67,19 +66,9 @@ void FKN_BUILD(struct BuildFiles build_files[], int array_length, char exe_name[
         strcat(result, " ");
         strcat(result, build_files[i].file_path);
 
-        if(file_count < array_length) {
-            file_count++;
-            continue;
-        }
-        else {
-            printf("[BUILD-FILES] \t %s \n", build_files[i].file_path);
-            file_count = 0;
-        }
-
-        printf("%ld", file_count);
+        (void)printf("[BUILD-FILES] \t %s \n", build_files[i].file_path);
     }
 
     system(result);
-
     free(result);
 }

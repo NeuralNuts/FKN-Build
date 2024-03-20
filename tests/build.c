@@ -1,5 +1,8 @@
 #include "../include/FKN_build.h"
+
 #include <stdio.h>
+
+#define EXE_NAME "my_math_program"
 
 struct BuildFiles build_files[] = {
     { .file_path = "./main.c", },
@@ -8,8 +11,11 @@ struct BuildFiles build_files[] = {
 };
 
 void build() {
-    for(int i = 0; i < FKN_GET_ARRAY_LENGTH(build_files); i++) {
-        FKN_BUILD(build_files, FKN_GET_ARRAY_LENGTH(build_files), "my_program");
+    size_t number_of_files = FKN_GET_ARRAY_LENGTH(build_files);
+
+    for(int i = 0; i < number_of_files; i++) {
+        FKN_BUILD(build_files, number_of_files, EXE_NAME);
+        break;
     }
 }
 
