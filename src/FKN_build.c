@@ -62,11 +62,22 @@ void FKN_BUILD(struct BuildFiles build_files[], int array_length, char exe_name[
     strcat(result, exe_name);
 
     for (int i = 0; i < array_length; i++) {
+        size_t file_count = 0;
+
         strcat(result, " ");
         strcat(result, build_files[i].file_path);
-    }
 
-    printf("%s\n", result);
+        if(file_count < array_length) {
+            file_count++;
+            continue;
+        }
+        else {
+            printf("[BUILD-FILES] \t %s \n", build_files[i].file_path);
+            file_count = 0;
+        }
+
+        printf("%ld", file_count);
+    }
 
     system(result);
 

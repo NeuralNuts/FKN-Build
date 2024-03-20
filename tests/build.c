@@ -10,7 +10,6 @@ struct BuildFiles build_files[] = {
 void build() {
     for(int i = 0; i < FKN_GET_ARRAY_LENGTH(build_files); i++) {
         FKN_BUILD(build_files, FKN_GET_ARRAY_LENGTH(build_files), "my_program");
-        printf("s");
     }
 }
 
