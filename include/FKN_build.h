@@ -1,17 +1,27 @@
-#ifndef _FKN_BUILD_H_
+#ifndef FKN_BUILD_H
+#define FKN_BUILD_H
 
-struct BuildFiles {
-    const char *file_path;
-};
-
-void check_file_extension(char *file_extension, struct dirent *dir_entry);
-
-void FKN_BUILD(struct BuildFiles build_files[], int array_length, char exe_name[]);
-
-char *read_dir(char *dir_path);
-
-int FKN_GET_ARRAY_LENGTH(struct BuildFiles build_files[]);
-
-void FKN_BUILD(struct BuildFiles build_files[], int array_length, char exe_name[]);
-
+#ifdef __cplusplus
+extern "C" {
 #endif
+
+    struct BuildFiles {
+        const char *file_path;
+    };
+
+    void FKN_BUILD(struct BuildFiles build_files[], int array_length, char exe_name[]);
+
+    char *get_build_files(const char *dir_path, const char *file_extension);
+
+    char *check_file_extension(const char *file_extension, char *file_name);
+
+    int FKN_GET_ARRAY_LENGTH(struct BuildFiles build_files[]);
+
+    void FKN_BUILD(struct BuildFiles build_files[], int array_length, char exe_name[]);
+
+    void FKN_BUILD_IT_FOR_ME(const char *dir_path, const char *file_extension, char exe_name[]);
+
+#ifdef __cplusplus
+}
+#endif
+#endif // FKN_BUILD_H
