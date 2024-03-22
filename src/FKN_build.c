@@ -142,7 +142,7 @@ void FKN_BUILD(struct BuildFiles build_files[], int array_length, char exe_name[
         strncat(result, " ", 2); 
         strncat(result, build_files[i].file_path, total_length);
 
-        (void)printf("[BUILD_FILES] \t %s \n", build_files[i].file_path);
+        printf(CYN "[BUILD_FILES] " RESET "%s\t" CYN "[OUTCOME] " GRN TICK "\n", build_files[i].file_path);
     }
 
     system(result);

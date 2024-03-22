@@ -13,9 +13,9 @@ struct BuildFiles build_files[] = {
 void build() {
     size_t number_of_files = FKN_GET_ARRAY_LENGTH(build_files);
 
-    //FKN_BUILD(build_files, number_of_files, EXE_NAME);
+    FKN_BUILD(build_files, number_of_files, EXE_NAME);
     
-    FKN_BUILD_IT_FOR_ME("../", "c", EXE_NAME);
+    //FKN_BUILD_IT_FOR_ME("../", "c", EXE_NAME);
 }
 
 int main() {

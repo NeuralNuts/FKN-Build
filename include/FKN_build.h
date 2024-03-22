@@ -11,10 +11,6 @@ extern "C" {
 
     void FKN_BUILD(struct BuildFiles build_files[], int array_length, char exe_name[]);
 
-    //char *get_build_files(struct FoundFiles found_files[], const char *dir_path, const char *file_extension);
-
-    //char *check_file_extension(struct FoundFiles found_files[],const char *file_extension, char *file_name);
-
     int FKN_GET_ARRAY_LENGTH(struct BuildFiles build_files[]);
 
     void FKN_BUILD(struct BuildFiles build_files[], int array_length, char exe_name[]);
